@@ -1,4 +1,4 @@
-import {Outlet, Route, Routes} from "react-router-dom";
+import {Outlet, Route, Routes, Link as NLink} from "react-router-dom";
 import Preview from "../preview.tsx";
 import {
     Card,
@@ -59,7 +59,9 @@ export default function Cfg() {
                 <CardFooter
                     className={'flex flex-row-reverse justify-start gap-4 absolute h-12 bottom-0 border-1 border-[#1C1A19]'}><Button
                     className={'bg-[#eb9951] h-8 font-medium'}>Save </Button>
-                    <Button className={' bg-[#32302D] h-8 font-medium'}>Return </Button></CardFooter>
+                    <NLink to={"/"}>
+                    <Button className={'bg-[#32302D] h-8 font-medium'}>Return </Button></NLink></CardFooter>
+
                 <Outlet />
             </Card>
         </main>)
