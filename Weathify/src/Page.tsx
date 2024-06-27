@@ -1,15 +1,35 @@
 import {NextUIProvider} from "@nextui-org/react";
 import Weather from "./Card.tsx";
 import Preview from "./preview.tsx";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
+import {data} from "autoprefixer";
 export default function Page() {
+    const data = localStorage.getItem('city')
+    const location = (JSON.parse(data).city)
+    let temp;
+    let humid;
+    let wind;
+    let desc;
+    const [datas, setDatas] = useState([]);
+    useEffect( () => {
+        const loadData = async () => await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=c216a7f2ab7928be3cb213c759306147`)
+            .then(response => response.json())
+            .then(dataw => {
+                setDatas(dataw)
+            })
+        const interval = setInterval(() => {
+            loadData();
+        }, 1000)
+        return () => clearInterval(interval)
+    })
+    console.log(datas)
     return (
     <>
             <NextUIProvider>
                 <main id={'main'} className={'grid grid-cols-3 gap-4 h-svh justify-items-left dark bg-[#222020] text-white'}>
                     <div className={'ml-[15px]'}>
-                        <Weather City={'Caracas'}></Weather>
+                        <Weather weatherData={datas}></Weather>
                     </div>
                     <div className={'col-start-2 col-span-12 mr-[15px]'}>
                         <Preview/>

@@ -1,65 +1,71 @@
 import {Table, TableBody, TableCell, TableColumn, TableHeader, TableRow} from "@nextui-org/react";
+import {Input} from "@nextui-org/input";
+import PInput from './PInput.tsx'
+export default function Paths() {
+    function getPath() {
 
-export default function () {
+    }
     return (
         <>
-            <div className={'flex flex-col m-4 h-10'}>
-                <strong className={'text-2xl font-medium'}>Paths</strong>
+            <div className={'flex flex-col m-4 h-[90%] overflow-hidden'}>
+                <strong className={'text-2xl font-extralight mt-1 opacity-100'}>Paths</strong>
                 <span className={'opacity-60'}>Configure the images for each type of weather</span>
-                <Table className={'mt-4'} aria-label="Example static collection table">
+                <form >
+                <Table className={'mt-4 min-h-[40%] max-h-[60%]'} aria-label="Example static collection table">
                     <TableHeader>
                         <TableColumn>WEATHER</TableColumn>
-                        <TableColumn>DAY</TableColumn>
-                        <TableColumn>NIGHT</TableColumn>
+                        <TableColumn>DAY PATHS</TableColumn>
+                        <TableColumn>NIGHT PATHS</TableColumn>
                     </TableHeader>
                     <TableBody>
                         <TableRow key="1">
                             <TableCell>Clear sky</TableCell>
-                            <TableCell>Few clouds</TableCell>
-                            <TableCell>Active</TableCell>
+                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput/></TableCell>
                         </TableRow>
                         <TableRow key="2">
-                            <TableCell>Zoey Lang</TableCell>
-                            <TableCell>Technical Lead</TableCell>
-                            <TableCell>Paused</TableCell>
+                            <TableCell>Few clouds</TableCell>
+                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput/></TableCell>
                         </TableRow>
                         <TableRow key="3">
-                            <TableCell>Jane Fisher</TableCell>
-                            <TableCell>Senior Developer</TableCell>
-                            <TableCell>Active</TableCell>
+                            <TableCell>Scattered clouds</TableCell>
+                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput/></TableCell>
                         </TableRow>
                         <TableRow key="4">
-                            <TableCell>William Howard</TableCell>
-                            <TableCell>Community Manager</TableCell>
-                            <TableCell>Vacation</TableCell>
+                            <TableCell>Broken clouds</TableCell>
+                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput/></TableCell>
                         </TableRow>
                         <TableRow key="5">
-                            <TableCell>William Howard</TableCell>
-                            <TableCell>Community Manager</TableCell>
-                            <TableCell>Vacation</TableCell>
+                            <TableCell>Shower rain</TableCell>
+                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput/></TableCell>
                         </TableRow>
                         <TableRow key="6">
-                            <TableCell>William Howard</TableCell>
-                            <TableCell>Community Manager</TableCell>
-                            <TableCell>Vacation</TableCell>
+                            <TableCell>Rain</TableCell>
+                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput/></TableCell>
                         </TableRow>
                         <TableRow key="7">
-                            <TableCell>William Howard</TableCell>
-                            <TableCell>Community Manager</TableCell>
-                            <TableCell>Vacation</TableCell>
+                            <TableCell>Thunderstorm</TableCell>
+                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput/></TableCell>
                         </TableRow>
                         <TableRow key="8">
-                            <TableCell>William Howard</TableCell>
-                            <TableCell>Community Manager</TableCell>
-                            <TableCell>Vacation</TableCell>
+                            <TableCell>Snow</TableCell>
+                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput/></TableCell>
                         </TableRow>
                         <TableRow key="9">
-                            <TableCell>William Howard</TableCell>
-                            <TableCell>Community Manager</TableCell>
-                            <TableCell>Vacation</TableCell>
+                            <TableCell>Mist</TableCell>
+                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput/></TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
+                </form>
             </div>
         </>
     )

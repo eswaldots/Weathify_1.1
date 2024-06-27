@@ -39,7 +39,6 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.mjs'),
       nodeIntegration: true,
       contextIsolation: true,
-      enableRemoteModule: true,
     },
   })
 

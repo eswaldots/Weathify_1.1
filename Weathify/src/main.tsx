@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Page from "./Page.tsx";
 import Weather from './Card.tsx'
+import Arch from './test.tsx'
 const router = createBrowserRouter([
     {
         path: "/",
@@ -30,12 +31,12 @@ const router = createBrowserRouter([
 import './index.css'
 import City from "./config/City.tsx";
 import Paths from "./config/Paths.tsx";
+import Search from "./test.tsx";
 ReactDOM.createRoot(document.getElementById('root')).render(
     <>
         <RouterProvider router={router}/>
     </>
 )
-
                 // Use contextBridge
 window.ipcRenderer.on('main-process-message', (_event, message) => {
     console.log(message)
