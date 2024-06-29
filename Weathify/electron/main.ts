@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
+import {dialog, ipcMain} from 'electron'
 import path from 'node:path'
 
 const require = createRequire(import.meta.url)
@@ -29,7 +30,12 @@ let win: BrowserWindow | null
 export function fun() {
   console.log('WORKED?')
 }
-
+async function handleFileOpen () {
+  const { canceled, filePaths } = await dialog.showOpenDialog()
+  if (!canceled) {
+    return filePaths[0]
+  }
+}
 function createWindow() {
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
@@ -41,7 +47,7 @@ function createWindow() {
       contextIsolation: true,
     },
   })
-
+  
   // Test active push message to Renderer-process.
   win.webContents.on('did-finish-load', () => {
     win?.webContents.send('main-process-message', (new Date).toLocaleString())
@@ -73,5 +79,11 @@ app.on('activate', () => {
     createWindow()
   }
 })
-app.whenReady().then(createWindow)
+app.whenReady().then(() => {
+  ipcMain.handle('dialog:openFile', handleFileOpen)
+  createWindow()
+  app.on('activate', function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
+})
 

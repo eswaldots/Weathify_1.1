@@ -4,11 +4,13 @@ import {Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow}
 import PInput from "./PInput.tsx";
 import React from "react";
 import {useState} from "react";
-export default function City() {
+export default function City({files}) {
         let [inputValue, setInputValue] = useState('');
     function zzz() {
         let city = { city: inputValue }
             localStorage.setItem('city', JSON.stringify(city));
+        localStorage.setItem('paths', JSON.stringify(files))
+        console.log(localStorage.getItem('paths'))
     }
     return (
         <div className={'flex flex-col m-4 mt-2'}>
@@ -29,8 +31,8 @@ export default function City() {
                     <TableBody>
                         <TableRow key="1">
                             <TableCell>Clear sky</TableCell>
-                            <TableCell><PInput/></TableCell>
-                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput w={'Clear sky day'}/></TableCell>
+                            <TableCell><PInput w={'Clear sky night'}/></TableCell>
                         </TableRow>
                         <TableRow key="2">
                             <TableCell>Few clouds</TableCell>

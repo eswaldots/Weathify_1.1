@@ -1,4 +1,5 @@
 import { ipcRenderer, contextBridge } from 'electron'
+const ipc = require('electron').ipcRenderer;
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld('ipcRenderer', {
   on(...args: Parameters<typeof ipcRenderer.on>) {
@@ -17,7 +18,13 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
     const [channel, ...omit] = args
     return ipcRenderer.invoke(channel, ...omit)
   },
-
   // You can expose other APTs you need here.
   // ...
 })
+contextBridge.exposeInMainWorld('electronAPI', {
+  openFile: () => ipcRenderer.invoke('dialog:openFile')
+})
+contextBridge.exposeInMainWorld('wallpaper', {
+
+})
+

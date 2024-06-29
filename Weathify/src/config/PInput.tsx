@@ -1,23 +1,21 @@
 import {Button, Card, Input} from '@nextui-org/react'
 import {isFileServingAllowed} from "vite";
-const ipc = require('electron').ipcRenderer;
 import {useRef, useState} from "react";
-
-
-export default function PInput() {
-    const [inputValue, setInputValue] = useState('');
-    function zz(event) {
-        ipc.send('open-file-dialog-for-file')
-    }
-
+import zz from '../main.tsx'
+export default function PInput({w}) {
+    const [color, setColor] = useState('bg-gray-700')
+    const handleClick = async () => {
+        zz(w)
+        setColor('bg-emerald-700')
+    };
     return (
         <>
-            <Card for={'file-input'} className={'w-28 border-0 max-h-10 overflow-x-scroll shadow-none bg-gray-700 hover:bg-gray-900'}>
-                {inputValue}
-                <input name="file-input" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
+            <Card className={'w-28 border-0 max-h-10 shadow-none ' + color + ' hover:bg-gray-900'}>
+                {''}
+                <Button name="file-input"
                        id="file-input" type={'text'}
-                       onClick={zz}
-                       className={'w-36 opacity-0'}/>
+                       onClick={handleClick}
+                       className={'w-36 opacity-0 rounded-none'}/>
 
             </Card>
         </>
