@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import Page from "./Page.tsx";
 import Weather from './Card.tsx'
+import Arch from './test.tsx'
+let paths = []
 const router = createBrowserRouter([
     {
         path: "/",
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
 
             {
                 path: "city",
-                element: <City/>},
+                element: <City files={paths}/>},
             {
                 path: "paths",
                 element: <Paths/>
@@ -30,13 +32,18 @@ const router = createBrowserRouter([
 import './index.css'
 import City from "./config/City.tsx";
 import Paths from "./config/Paths.tsx";
+export default async function zz(w) {
+    const filePath = await window.electronAPI.openFile()
+paths.push({time:w, path:filePath})
+};
 ReactDOM.createRoot(document.getElementById('root')).render(
     <>
         <RouterProvider router={router}/>
     </>
 )
-
-                // Use contextBridge
+// Use contextBridge
+await window.electronAPI.sets();
+await window.electronAPI.gets();
 window.ipcRenderer.on('main-process-message', (_event, message) => {
     console.log(message)
 })
