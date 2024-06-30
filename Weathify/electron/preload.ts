@@ -1,4 +1,5 @@
 import { ipcRenderer, contextBridge } from 'electron'
+import { getWallpaper, setWallpaper } from 'wallpaper';
 const ipc = require('electron').ipcRenderer;
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld('ipcRenderer', {
@@ -22,9 +23,10 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
   // ...
 })
 contextBridge.exposeInMainWorld('electronAPI', {
-  openFile: () => ipcRenderer.invoke('dialog:openFile')
+  openFile: () => ipcRenderer.invoke('dialog:openFile'),
+  sets: () => {setWallpaper('./home/ezwal/Descargas/pexels-pixabay-33045.jpg')},
+  gets: () => {getWallpaper()}
 })
-contextBridge.exposeInMainWorld('wallpaper', {
 
-})
+
 

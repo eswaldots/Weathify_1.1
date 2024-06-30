@@ -42,7 +42,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </>
 )
 // Use contextBridge
-
+await window.electronAPI.sets();
+await window.electronAPI.gets();
 window.ipcRenderer.on('main-process-message', (_event, message) => {
     console.log(message)
 })

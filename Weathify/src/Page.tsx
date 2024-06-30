@@ -4,9 +4,10 @@ import Preview from "./preview.tsx";
 import React, {useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
 export default function Page() {
+        const data = JSON.parse(localStorage.getItem('city'))
+        let location = (data.city)
+        console.log(location)
 
-        const data = localStorage.getItem('city')
-        let location = (JSON.parse(data).city)
     const [datas, setDatas] = useState([]);
     useEffect( () => {
         const loadData = async () => await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location = 'Andorra'}&appid=c216a7f2ab7928be3cb213c759306147`)
