@@ -1,6 +1,5 @@
-import { ipcRenderer, contextBridge } from 'electron'
-import { getWallpaper, setWallpaper } from 'wallpaper';
-const ipc = require('electron').ipcRenderer;
+import electron, {ipcRenderer, contextBridge} from 'electron'
+import child_process, {exec} from "child_process";
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld('ipcRenderer', {
   on(...args: Parameters<typeof ipcRenderer.on>) {
@@ -19,14 +18,55 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
     const [channel, ...omit] = args
     return ipcRenderer.invoke(channel, ...omit)
   },
-  // You can expose other APTs you need here.
-  // ...
 })
 contextBridge.exposeInMainWorld('electronAPI', {
   openFile: () => ipcRenderer.invoke('dialog:openFile'),
-  sets: () => {setWallpaper('./home/ezwal/Descargas/pexels-pixabay-33045.jpg')},
-  gets: () => {getWallpaper()}
 })
-
-
-
+const changeWallpaper = () => {
+  var src = JSON.parse(localStorage.getItem("paths"));
+  const weather = JSON.parse(localStorage.getItem("weather"));
+  if (weather === "01d") {
+    src = src[0]["path"];
+  }
+  if (weather === "02d") {
+    src = src[1]["path"];
+  }
+  if (weather === "03d") {
+    src = src[2]["path"];
+  }
+  if (weather === "04d") {
+    src = src[3]["path"];
+  }
+  if (weather === "09d") {
+    src = src[4]["path"];
+  }
+  if (weather === "10d") {
+    src = src[5]["path"];
+  }
+  if (weather === "11d") {
+    src = src[6]["path"];
+  }
+  if (weather === "13d") {
+    src = src[7]["path"];
+  }
+  if (weather === "50d") {
+    src = src[8]["path"];
+  }
+  console.log();
+  localStorage.setItem('img', (src))
+  child_process.exec("wallpaper " + src.slice(2), (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log('success');
+  });
+};
+changeWallpaper();
+setInterval(() => {
+  changeWallpaper();
+}, 12e4);

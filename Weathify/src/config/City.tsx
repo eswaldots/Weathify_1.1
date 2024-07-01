@@ -8,8 +8,8 @@ export default function City({files}) {
         let [inputValue, setInputValue] = useState('');
     function zzz() {
         let city = { city: inputValue }
-            localStorage.setItem('city', JSON.stringify(city));
-        localStorage.setItem('paths', JSON.stringify(files))
+        localStorage.setItem('city', JSON.stringify(city));
+        localStorage.setItem('paths', JSON.parse(files))
         console.log(localStorage.getItem('paths'))
     }
     return (
@@ -36,43 +36,43 @@ export default function City({files}) {
                         </TableRow>
                         <TableRow key="2">
                             <TableCell>Few clouds</TableCell>
-                            <TableCell><PInput/></TableCell>
-                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput w={'Few clouds day'}/></TableCell>
+                            <TableCell><PInput w={'Few clouds night'}/></TableCell>
                         </TableRow>
                         <TableRow key="3">
                             <TableCell>Scattered clouds</TableCell>
-                            <TableCell><PInput/></TableCell>
-                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput w={'Scattered clouds day'}/></TableCell>
+                            <TableCell><PInput w={'Scattered clouds night'}/></TableCell>
                         </TableRow>
                         <TableRow key="4">
                             <TableCell>Broken clouds</TableCell>
-                            <TableCell><PInput/></TableCell>
-                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput w={'Broken clouds day'}/></TableCell>
+                            <TableCell><PInput w={'Broken clouds night'}/></TableCell>
                         </TableRow>
                         <TableRow key="5">
                             <TableCell>Shower rain</TableCell>
-                            <TableCell><PInput/></TableCell>
-                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput w={'Shower rain day'}/></TableCell>
+                            <TableCell><PInput w={'Shower rain night'}/></TableCell>
                         </TableRow>
                         <TableRow key="6">
                             <TableCell>Rain</TableCell>
-                            <TableCell><PInput/></TableCell>
-                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput w={'Rain day'}/></TableCell>
+                            <TableCell><PInput w={'Rain night'}/></TableCell>
                         </TableRow>
                         <TableRow key="7">
                             <TableCell>Thunderstorm</TableCell>
-                            <TableCell><PInput/></TableCell>
-                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput w={'Thunderstorm day'}/></TableCell>
+                            <TableCell><PInput w={'Thunderstorm night'}/></TableCell>
                         </TableRow>
                         <TableRow key="8">
                             <TableCell>Snow</TableCell>
-                            <TableCell><PInput/></TableCell>
-                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput w={'Snow day'}/></TableCell>
+                            <TableCell><PInput w={'Snow night'}/></TableCell>
                         </TableRow>
                         <TableRow key="9">
                             <TableCell>Mist</TableCell>
-                            <TableCell><PInput/></TableCell>
-                            <TableCell><PInput/></TableCell>
+                            <TableCell><PInput w={'Mist day'}/></TableCell>
+                            <TableCell><PInput w={'Mist night'}/></TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>

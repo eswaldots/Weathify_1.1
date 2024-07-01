@@ -32,6 +32,7 @@ const router = createBrowserRouter([
 import './index.css'
 import City from "./config/City.tsx";
 import Paths from "./config/Paths.tsx";
+import {ipcRenderer} from "electron";
 export default async function zz(w) {
     const filePath = await window.electronAPI.openFile()
 paths.push({time:w, path:filePath})
@@ -42,8 +43,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </>
 )
 // Use contextBridge
-await window.electronAPI.sets();
-await window.electronAPI.gets();
-window.ipcRenderer.on('main-process-message', (_event, message) => {
-    console.log(message)
-})
+//window.ipcRenderer.on('main-process-message', (_event, message) => {
+    //console.log(message)
+//})
