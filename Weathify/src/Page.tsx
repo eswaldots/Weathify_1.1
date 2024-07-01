@@ -15,7 +15,7 @@ export default function Page() {
     }
     const [datas, setDatas] = useState([]);
     useEffect( () => {
-        const loadData = () => fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locate = 'Charallave'}&appid=c216a7f2ab7928be3cb213c759306147`)
+        const loadData = () => fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locate}&appid=c216a7f2ab7928be3cb213c759306147`)
             .then(response => response.json())
             .then(dataw => {
                 setDatas(dataw)
